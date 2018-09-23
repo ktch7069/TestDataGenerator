@@ -18,7 +18,7 @@ public class Engine {
     
     private Properties prop = new Properties();
     private InputStream input=null;
-    private ArrayList<Data> emailData;
+    private ArrayList<DocumentData> emailData;
     private final boolean debug = true;
    
     public Engine(){
@@ -49,7 +49,7 @@ public class Engine {
           
             System.out.println("Set of Emails & Document ID created are : ");
             System.out.println("********************");
-            for(Data dat:emailData){
+            for(DocumentData dat:emailData){
                 System.out.println(dat.getDocumentId());
                 System.out.println(dat.getEmailAddress());
                 System.out.println("*********************");

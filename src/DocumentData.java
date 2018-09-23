@@ -9,14 +9,14 @@ import java.util.Random;
  *
  * @author tchung
  */
-public class Data {
+public class DocumentData {
     
     private int document_id;
     private String customer_email;
     private int maxDocId;
     private int minDocId;
     
-    public Data(int maxDocId, int minDocId){  
+    public DocumentData(int maxDocId, int minDocId){  
         this.maxDocId=maxDocId;
         this.minDocId=minDocId;
         document_id= generateRandomDocId();

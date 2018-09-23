@@ -24,7 +24,7 @@ public class DelimitedFileParser {
     private final boolean debug =false;
     
     //arraylist to store the email address 
-    private ArrayList<Data> emailData;
+    private ArrayList<DocumentData> documentDataCollection;
     private String inputPath;
     private String outputPath;
     private char fieldDelimiter;
@@ -39,7 +39,7 @@ public class DelimitedFileParser {
         fieldQuote=(prop.getProperty(fieldQuoteKey)).charAt(0);
         minDocIdNbr=Integer.parseInt(prop.getProperty(minDocNumberKey));
         maxDocIdNbr=Integer.parseInt(prop.getProperty(maxDocNumberKey));
-        emailData = new ArrayList<Data>();
+        documentDataCollection = new ArrayList<DocumentData>();
     }
     
     public void parseLine() throws IOException{
@@ -116,7 +116,7 @@ public class DelimitedFileParser {
                     //Reaching end of field
                     else if (ch == fieldDelimiter) {
                         
-                        Data aDat = new Data(maxDocIdNbr,minDocIdNbr); 
+                        DocumentData aDat = new DocumentData(maxDocIdNbr,minDocIdNbr); 
                         
                         if(debug == true){
                             System.out.print("Putting String : ");
@@ -125,7 +125,7 @@ public class DelimitedFileParser {
                           }
                         
                         aDat.setEmailAddress(curVal.toString());
-                        emailData.add(aDat);
+                        documentDataCollection.add(aDat);
 
                         curVal = new StringBuffer();
                         startCollectChar = false;
@@ -149,17 +149,17 @@ public class DelimitedFileParser {
         }
         
        //putting in the data just before EOF .... 
-       Data aDat = new Data(maxDocIdNbr,minDocIdNbr);
+       DocumentData aDat = new DocumentData(maxDocIdNbr,minDocIdNbr);
        aDat.setEmailAddress(curVal.toString());
-       emailData.add(aDat);
+       documentDataCollection.add(aDat);
        curVal = new StringBuffer();
      
     }
  
   }
   
-  public ArrayList<Data> getEmailData(){
-    return emailData;
+  public ArrayList<DocumentData> getEmailData(){
+    return documentDataCollection;
    }
     
 }
